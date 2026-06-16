@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "v8fyC0yOsRJqDjdHPskmxqYwBOCLaug4emAIkr+359s=",
+  "Source": "WorkloadGateway",
+  "BasePath": "_content/WorkloadGateway",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

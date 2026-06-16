@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "dgSpecHash": "03+9fnmZDzc=",
+  "success": true,
+  "projectFilePath": "/Users/deepakabi/Projects/OrchestraSF/src/WorkloadManager/WorkloadManager.csproj",
+  "expectedPackageFiles": [
+    "/Users/deepakabi/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/Users/deepakabi/.nuget/packages/microsoft.netcore.targets/1.1.0/microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "/Users/deepakabi/.nuget/packages/microsoft.servicefabric/10.1.2493/microsoft.servicefabric.10.1.2493.nupkg.sha512",
+    "/Users/deepakabi/.nuget/packages/microsoft.servicefabric.data/7.1.2493/microsoft.servicefabric.data.7.1.2493.nupkg.sha512",
+    "/Users/deepakabi/.nuget/packages/microsoft.servicefabric.data.extensions/7.1.2493/microsoft.servicefabric.data.extensions.7.1.2493.nupkg.sha512",
+    "/Users/deepakabi/.nuget/packages/microsoft.servicefabric.data.interfaces/7.1.2493/microsoft.servicefabric.data.interfaces.7.1.2493.nupkg.sha512",
+    "/Users/deepakabi/.nuget/packages/microsoft.servicefabric.diagnostics.internal/7.1.2493/microsoft.servicefabric.diagnostics.internal.7.1.2493.nupkg.sha512",
+    "/Users/deepakabi/.nuget/packages/microsoft.servicefabric.fabrictransport.internal/7.1.2493/microsoft.servicefabric.fabrictransport.internal.7.1.2493.nupkg.sha512",
+    "/Users/deepakabi/.nuget/packages/microsoft.servicefabric.services/7.1.2493/microsoft.servicefabric.services.7.1.2493.nupkg.sha512",
+    "/Users/deepakabi/.nuget/packages/microsoft.servicefabric.services.remoting/7.1.2493/microsoft.servicefabric.services.remoting.7.1.2493.nupkg.sha512",
+    "/Users/deepakabi/.nuget/packages/system.globalization/4.3.0/system.globalization.4.3.0.nupkg.sha512",
+    "/Users/deepakabi/.nuget/packages/system.io/4.3.0/system.io.4.3.0.nupkg.sha512",
+    "/Users/deepakabi/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
+    "/Users/deepakabi/.nuget/packages/system.reflection/4.3.0/system.reflection.4.3.0.nupkg.sha512",
+    "/Users/deepakabi/.nuget/packages/system.reflection.primitives/4.3.0/system.reflection.primitives.4.3.0.nupkg.sha512",
+    "/Users/deepakabi/.nuget/packages/system.resources.resourcemanager/4.3.0/system.resources.resourcemanager.4.3.0.nupkg.sha512",
+    "/Users/deepakabi/.nuget/packages/system.runtime/4.3.0/system.runtime.4.3.0.nupkg.sha512",
+    "/Users/deepakabi/.nuget/packages/system.runtime.serialization.primitives/4.3.0/system.runtime.serialization.primitives.4.3.0.nupkg.sha512",
+    "/Users/deepakabi/.nuget/packages/system.text.encoding/4.3.0/system.text.encoding.4.3.0.nupkg.sha512",
+    "/Users/deepakabi/.nuget/packages/system.threading.tasks/4.3.0/system.threading.tasks.4.3.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,14 @@
+# Default ignored files
+/bin/
+/obj/
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Service Fabric
+/ApplicationPackageRoot/
+/pkg/
+*.sfpkg
