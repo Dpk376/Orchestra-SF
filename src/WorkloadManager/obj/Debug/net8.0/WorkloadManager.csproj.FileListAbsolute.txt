@@ -66,3 +66,4 @@
 /Users/deepakabi/Projects/OrchestraSF/src/WorkloadManager/obj/Debug/net8.0/WorkloadManager.pdb
 /Users/deepakabi/Projects/OrchestraSF/src/WorkloadManager/obj/Debug/net8.0/WorkloadManager.genruntimeconfig.cache
 /Users/deepakabi/Projects/OrchestraSF/src/WorkloadManager/obj/Debug/net8.0/ref/WorkloadManager.dll
+/Users/deepakabi/Projects/OrchestraSF/src/WorkloadManager/obj/Debug/net8.0/WorkloadManager.sourcelink.json

@@ -13,7 +13,7 @@ namespace WorkloadGateway.Controllers;
 public class WorkloadsController : ControllerBase
 {
     [HttpPost("workloads")]
-    public async Task<IActionResult> SubmitWorkload([FromBody] SubmitRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> SubmitWorkload([FromBody] SubmitRequest request, [FromHeader(Name = "Idempotency-Key")] string? idempotencyKey, CancellationToken cancellationToken)
     {
         if (request.RequiredCapacityUnits <= 0)
         {
@@ -23,15 +23,12 @@ public class WorkloadsController : ControllerBase
             }));
         }
 
-        var id = Guid.NewGuid().ToString("N");
-        
-        long randomKey = BitConverter.ToInt64(Guid.NewGuid().ToByteArray(), 0);
-        var randomProxy = ServiceProxy.Create<IWorkloadManager>(
-            new Uri("fabric:/ReliableServicesPlatform/WorkloadManager"),
-            new ServicePartitionKey(randomKey));
+        var id = string.IsNullOrWhiteSpace(idempotencyKey) ? Guid.NewGuid().ToString("N") : idempotencyKey.Trim();
 
-        var createdId = await randomProxy.SubmitAsync(request.RequiredCapacityUnits, cancellationToken);
-        return Ok(new { workloadId = createdId });
+        var proxy = GetManagerProxy(id);
+        await proxy.SubmitAsync(id, request.RequiredCapacityUnits, cancellationToken);
+
+        return Ok(new { workloadId = id });
     }
 
     [HttpGet("workloads/{id}")]

@@ -49,3 +49,4 @@
 /Users/deepakabi/Projects/OrchestraSF/src/WorkloadGateway/obj/Debug/net8.0/linux-x64/WorkloadGateway.pdb
 /Users/deepakabi/Projects/OrchestraSF/src/WorkloadGateway/obj/Debug/net8.0/linux-x64/WorkloadGateway.genruntimeconfig.cache
 /Users/deepakabi/Projects/OrchestraSF/src/WorkloadGateway/obj/Debug/net8.0/linux-x64/ref/WorkloadGateway.dll
+/Users/deepakabi/Projects/OrchestraSF/src/WorkloadGateway/obj/Debug/net8.0/linux-x64/WorkloadGateway.sourcelink.json

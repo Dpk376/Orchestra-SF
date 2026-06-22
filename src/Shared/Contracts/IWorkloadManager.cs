@@ -14,7 +14,7 @@ public interface IWorkloadManager : IService
     /// <param name="requiredCapacityUnits">The amount of capacity required to schedule this workload.</param>
     /// <param name="cancellationToken">A cancellation token to observe while waiting for the task to complete.</param>
     /// <returns>A unique identifier for the submitted workload.</returns>
-    Task<string> SubmitAsync(int requiredCapacityUnits, CancellationToken cancellationToken);
+    Task SubmitAsync(string workloadId, int requiredCapacityUnits, CancellationToken cancellationToken);
 
     /// <summary>
     /// Retrieves the current state of a workload.

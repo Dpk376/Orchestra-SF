@@ -24,31 +24,36 @@ internal sealed class WorkloadManager : StatefulService, IWorkloadManager
         return this.CreateServiceRemotingReplicaListeners();
     }
 
-    public async Task<string> SubmitAsync(int requiredCapacityUnits, CancellationToken cancellationToken)
+    public async Task SubmitAsync(string workloadId, int requiredCapacityUnits, CancellationToken cancellationToken)
     {
-        var id = Guid.NewGuid().ToString("N");
-        var workload = new Workload
-        {
-            WorkloadId = id,
-            State = WorkloadState.Submitted,
-            RequiredCapacityUnits = requiredCapacityUnits,
-            CreatedUtc = DateTime.UtcNow,
-            UpdatedUtc = DateTime.UtcNow,
-            Attempts = 0
-        };
-
         var dict = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, Workload>>("workloads");
         var queue = await this.StateManager.GetOrAddAsync<IReliableQueue<string>>("pendingQueue");
 
         using (var tx = this.StateManager.CreateTransaction())
         {
-            await dict.AddAsync(tx, id, workload);
-            await queue.EnqueueAsync(tx, id);
+            var existing = await dict.TryGetValueAsync(tx, workloadId);
+            if (existing.HasValue)
+            {
+                // Idempotent retry: workload already exists, just return success.
+                return;
+            }
+
+            var workload = new Workload
+            {
+                WorkloadId = workloadId,
+                State = WorkloadState.Submitted,
+                RequiredCapacityUnits = requiredCapacityUnits,
+                CreatedUtc = DateTime.UtcNow,
+                UpdatedUtc = DateTime.UtcNow,
+                Attempts = 0
+            };
+
+            await dict.AddAsync(tx, workloadId, workload);
+            await queue.EnqueueAsync(tx, workloadId);
             await tx.CommitAsync();
         }
 
-        ServiceEventSource.Current.ServiceMessage(this.Context, $"Submitted workload {id}");
-        return id;
+        ServiceEventSource.Current.ServiceMessage(this.Context, $"Submitted workload {workloadId}");
     }
 
     public async Task<Workload?> GetAsync(string workloadId, CancellationToken cancellationToken)

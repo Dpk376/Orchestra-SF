@@ -10,3 +10,4 @@
 /Users/deepakabi/Projects/OrchestraSF/src/Shared/obj/Debug/net8.0/refint/Shared.dll
 /Users/deepakabi/Projects/OrchestraSF/src/Shared/obj/Debug/net8.0/Shared.pdb
 /Users/deepakabi/Projects/OrchestraSF/src/Shared/obj/Debug/net8.0/ref/Shared.dll
+/Users/deepakabi/Projects/OrchestraSF/src/Shared/obj/Debug/net8.0/Shared.sourcelink.json

@@ -38,3 +38,4 @@
 /Users/deepakabi/Projects/OrchestraSF/src/CapacityService/obj/Debug/net8.0/linux-x64/CapacityService.pdb
 /Users/deepakabi/Projects/OrchestraSF/src/CapacityService/obj/Debug/net8.0/linux-x64/CapacityService.genruntimeconfig.cache
 /Users/deepakabi/Projects/OrchestraSF/src/CapacityService/obj/Debug/net8.0/linux-x64/ref/CapacityService.dll
+/Users/deepakabi/Projects/OrchestraSF/src/CapacityService/obj/Debug/net8.0/linux-x64/CapacityService.sourcelink.json

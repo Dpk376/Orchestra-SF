@@ -154,3 +154,4 @@
 /Users/deepakabi/Projects/OrchestraSF/tests/Platform.Tests/obj/Debug/net8.0/Platform.Tests.pdb
 /Users/deepakabi/Projects/OrchestraSF/tests/Platform.Tests/obj/Debug/net8.0/Platform.Tests.genruntimeconfig.cache
 /Users/deepakabi/Projects/OrchestraSF/tests/Platform.Tests/obj/Debug/net8.0/ref/Platform.Tests.dll
+/Users/deepakabi/Projects/OrchestraSF/tests/Platform.Tests/obj/Debug/net8.0/Platform.Tests.sourcelink.json
