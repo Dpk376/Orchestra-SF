@@ -23,4 +23,12 @@ public interface IWorkloadManager : IService
     /// <param name="cancellationToken">A cancellation token to observe while waiting for the task to complete.</param>
     /// <returns>The workload state, or null if it was not found.</returns>
     Task<Workload?> GetAsync(string workloadId, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Cancels a workload if it is not already in a terminal state.
+    /// </summary>
+    /// <param name="workloadId">The unique identifier of the workload.</param>
+    /// <param name="cancellationToken">A cancellation token to observe while waiting for the task to complete.</param>
+    /// <returns>True if successfully cancelled, false if not found or already in a terminal state.</returns>
+    Task<bool> CancelAsync(string workloadId, CancellationToken cancellationToken);
 }

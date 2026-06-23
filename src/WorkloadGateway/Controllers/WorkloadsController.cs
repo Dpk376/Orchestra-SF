@@ -45,6 +45,26 @@ public class WorkloadsController : ControllerBase
         return Ok(workload);
     }
 
+    [HttpDelete("workloads/{id}")]
+    public async Task<IActionResult> CancelWorkload(string id, CancellationToken cancellationToken)
+    {
+        var proxy = GetManagerProxy(id);
+        var result = await proxy.CancelAsync(id, cancellationToken);
+
+        if (!result)
+        {
+            // Distinguish between Not Found and Terminal State Conflict
+            var workload = await proxy.GetAsync(id, cancellationToken);
+            if (workload == null)
+            {
+                return NotFound();
+            }
+            return Conflict(new { message = $"Workload {id} cannot be cancelled because it is in a terminal state: {workload.State}" });
+        }
+
+        return NoContent();
+    }
+
     [HttpGet("health")]
     public IActionResult Health()
     {

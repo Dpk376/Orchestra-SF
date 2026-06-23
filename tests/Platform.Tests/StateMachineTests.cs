@@ -69,4 +69,16 @@ public class StateMachineTests
         Assert.Equal(WorkloadState.Completed, next.State);
         Assert.False(requeue);
     }
+
+    [Fact]
+    public void Advance_Cancelled_DoesNotAdvance()
+    {
+        var workload = new Workload { State = WorkloadState.Cancelled, AssignedNodeId = string.Empty };
+        var grant = new CapacityGrant { Granted = false };
+
+        var (next, requeue) = WorkloadStateMachine.Advance(workload, grant);
+
+        Assert.Equal(WorkloadState.Cancelled, next.State);
+        Assert.False(requeue);
+    }
 }

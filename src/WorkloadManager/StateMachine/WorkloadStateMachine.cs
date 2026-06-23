@@ -19,6 +19,11 @@ public static class WorkloadStateMachine
             Attempts = current.Attempts + 1
         };
 
+        if (current.State == WorkloadState.Cancelled)
+        {
+            return (current, false);
+        }
+
         if (current.State == WorkloadState.Submitted)
         {
             if (grant.Granted)

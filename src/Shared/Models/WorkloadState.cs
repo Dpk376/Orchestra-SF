@@ -28,5 +28,10 @@ public enum WorkloadState
     /// <summary>
     /// The workload failed to schedule or execute after maximum retries.
     /// </summary>
-    Failed
+    Failed,
+
+    /// <summary>
+    /// The workload was cancelled by the user.
+    /// </summary>
+    Cancelled
 }

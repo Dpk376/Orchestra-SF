@@ -66,6 +66,48 @@ internal sealed class WorkloadManager : StatefulService, IWorkloadManager
         }
     }
 
+    public async Task<bool> CancelAsync(string workloadId, CancellationToken cancellationToken)
+    {
+        var dict = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, Workload>>("workloads");
+        
+        using (var tx = this.StateManager.CreateTransaction())
+        {
+            var result = await dict.TryGetValueAsync(tx, workloadId);
+            if (!result.HasValue) return false;
+
+            var current = result.Value;
+            if (current.State == WorkloadState.Completed || 
+                current.State == WorkloadState.Failed || 
+                current.State == WorkloadState.Cancelled)
+            {
+                return false;
+            }
+
+            if ((current.State == WorkloadState.Scheduled || current.State == WorkloadState.Running) && !string.IsNullOrEmpty(current.AssignedNodeId))
+            {
+                var capacityProxy = GetCapacityServiceProxy();
+                await capacityProxy.ReleaseAsync(current.AssignedNodeId, current.RequiredCapacityUnits, cancellationToken);
+            }
+
+            var next = new Workload
+            {
+                WorkloadId = current.WorkloadId,
+                State = WorkloadState.Cancelled,
+                RequiredCapacityUnits = current.RequiredCapacityUnits,
+                AssignedNodeId = string.Empty, // clear assignment
+                CreatedUtc = current.CreatedUtc,
+                UpdatedUtc = DateTime.UtcNow,
+                Attempts = current.Attempts
+            };
+
+            await dict.SetAsync(tx, workloadId, next);
+            await tx.CommitAsync();
+
+            ServiceEventSource.Current.ServiceMessage(this.Context, $"Workload {workloadId} cancelled (Partition: {this.Context.PartitionId})");
+            return true;
+        }
+    }
+
     protected override async Task RunAsync(CancellationToken cancellationToken)
     {
         var dict = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, Workload>>("workloads");
